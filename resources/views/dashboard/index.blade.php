@@ -180,7 +180,7 @@
 {{-- <div class="row"> --}}
 
 
-    <div class="col-sm-9">
+    {{-- <div class="col-sm-9">
         <div class="panel panel-default">
             <div class="panel-title">
                 <div class="col-sm-8">
@@ -301,7 +301,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
 
 
