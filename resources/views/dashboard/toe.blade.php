@@ -18,7 +18,7 @@
 
 
         <div class="card-header" id="container" >
-            <h2 id="header">Table ID: {{$user->current_table_id}} --- Testing 123<button class="pull-right btn btn-success" style="float:right;margin: 0;" id="reload">Refresh Table</button></h2>
+            <h2 id="header">Table ID: {{$user->current_table_id}}<button class="pull-right btn btn-success" style="float:right;margin: 0;" id="reload">Refresh Table</button></h2>
         </div>
         {{-- @php
             $exiter = DB::table('tableofexit')->where('current_table_id',$user->current_table_id)->first();
