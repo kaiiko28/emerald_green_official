@@ -228,7 +228,7 @@
                         data-splitin="none"
                         data-splitout="none"
                         data-responsive_offset="on"
-                        data-paddingright="['550','155','50','2']" >Emeral Green offers extensive collections of product from trusted brand around the country  </div>
+                        data-paddingright="['550','155','50','2']" >Emerald Green offers extensive collections of product from trusted brand around the country  </div>
 
                         {{-- <div class="tp-caption"
                         data-x="['left','left','left','center']" data-hoffset="['0','-4','-4','0']"
@@ -310,7 +310,7 @@
                         data-splitin="none"
                         data-splitout="none"
                         data-responsive_offset="on"
-                        data-paddingright="['550','155','50','2']" >Emeral Green offers extensive collections of product from trusted brand around the country </div>
+                        data-paddingright="['550','155','50','2']" >Emerald Green offers extensive collections of product from trusted brand around the country </div>
 
                         {{-- <div class="tp-caption"
                         data-x="['left','left','left','center']" data-hoffset="['0','-4','-4','0']"
@@ -369,7 +369,7 @@
                                 </div>
                                 <div class="information-open information-bottom">
                                     <span>Facebook Page:</span>
-                                    <span class="information-content"><a href="https://web.facebook.com/Happy-Emerald-102829421169785/">Happy Emerald Online Shop</a></span>
+                                    <span class="information-content"><a href="https://web.facebook.com/Emerald-Green-105092764303319/">Emerald Green Online Shop</a></span>
                                 </div>
                             </div> <!-- /information -->
                         </div><!-- /col-lg-5 -->
