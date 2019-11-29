@@ -18,7 +18,7 @@
 
 
         <div class="card-header" id="container" >
-            <h2 id="header">Table ID: {{$user->current_table_id}} <button class="pull-right btn btn-success" style="float:right;margin: 0;" id="reload">Refresh Table</button></h2>
+            <h2 id="header">Table ID: {{$user->current_table_id}} --- Testing 123<button class="pull-right btn btn-success" style="float:right;margin: 0;" id="reload">Refresh Table</button></h2>
         </div>
         {{-- @php
             $exiter = DB::table('tableofexit')->where('current_table_id',$user->current_table_id)->first();
@@ -82,12 +82,12 @@
 
                                     @endphp
                                     @php
-                                        $user = DB::table('TableOfExit')->where('userid',  $user->userid)->first();
+                                        $user = DB::table('tableofexit')->where('userid',  $user->userid)->first();
                                     @endphp
                                     @if ($column == 1)
                                         @if($user->table_batch != "table top")
                                             @php
-                                                DB::table('TableOfExit')->where('userid',  $user->userid)->update([
+                                                DB::table('tableofexit')->where('userid',  $user->userid)->update([
                                                     "table_batch" => 'table top',
                                                 ]);
                                             @endphp
@@ -96,7 +96,7 @@
                                     @elseif ($column == 2 || $column == 4 || $column == 5 || $column == 8 || $column == 9 || $column == 10 || $column == 11 || $column == 16 || $column == 17 || $column == 18 || $column == 19 || $column == 20 || $column == 21 || $column == 22 || $column == 23)
                                         @if($user->table_batch != "batch a")
                                             @php
-                                                DB::table('TableOfExit')->where('userid',  $user->userid)->update([
+                                                DB::table('tableofexit')->where('userid',  $user->userid)->update([
                                                     "table_batch" => 'batch a',
                                                 ]);
                                             @endphp
@@ -104,7 +104,7 @@
                                     @else
                                         @if($user->table_batch != "batch b")
                                             @php
-                                                DB::table('TableOfExit')->where('userid',  $user->userid)->update([
+                                                DB::table('tableofexit')->where('userid',  $user->userid)->update([
                                                     "table_batch" => 'batch b',
                                                 ]);
                                             @endphp
