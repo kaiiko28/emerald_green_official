@@ -173,9 +173,10 @@
 
 @section('scripts')
     <script>
-        // $("#reload").on('click', function() {
-
-        // });
+        $("#reload").on('click', function() {
+            $("#content").load(location.href + " #toe");
+            $("#header").load(location.href + " #header");
+        });
 
     </script>
 
