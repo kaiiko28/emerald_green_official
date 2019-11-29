@@ -19,7 +19,7 @@ class TableOfExitController extends Controller
         $reward = 0;
         $user = TableOfExit::where('user_code', auth()->user()->code)->first();
         $upline =  User::where('code', auth()->user()->referrer)->first();
-        $user_table = TableOfExit::where('current_table_id', $user->current_table_id)->where('current_table', $user->current_table)->orderby('joined_table_at', 'asc')->get();
+        $user_table = TableOfExit::where('current_table_id', $user->current_table_id)->where('current_table', $user->current_table)->orderby('joined_table_at', 'desc')->get();
         $top = TableOfExit::where('current_table_id', $user->current_table_id)->where('current_table', $user->current_table)->orderby('joined_table_at', 'asc')->first();
         $last = TableOfExit::where('current_table_id', $user->current_table_id)->latest();
         // return auth()->user()->username;

@@ -46,7 +46,6 @@ class TopAccountSeeder extends Seeder
             'username' => 'Master_user',
             'email' => 'emerald_master@gmail.com',
             'user_code' => $activation_code,
-            'current_table' => 'Table 1',
             'current_table_earning' => 0,
         ]);
 
