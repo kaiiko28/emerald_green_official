@@ -1,0 +1,10 @@
+.social-icons ul li a i {
+    color: #212529;
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.header-blog, .stats, footer, .video, .call-to-action {
+    background-image: url(../img/bg11.jpg)!important;
+}

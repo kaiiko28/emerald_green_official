@@ -1,0 +1,10 @@
+.page-cover:after {
+    content: "";
+    background: -webkit-gradient(linear, right top, left top, from(#D1335B), to(#00152e));
+    background: linear-gradient(to left, #007bff, #00152e)!important;
+}
+@media (min-width: 768px) {
+	.section-home .section-content img.logo {
+	    height: 450px!important;
+	}
+}
