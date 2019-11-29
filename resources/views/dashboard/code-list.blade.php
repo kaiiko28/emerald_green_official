@@ -114,7 +114,7 @@
                                     @endphp
                                     <tr>
                                         <td>
-                                            {{$user->name}}
+                                            {{$user->firstname}} {{$user->lastname}}
                                         </td>
                                         <td>
                                             {{$user->username}}
