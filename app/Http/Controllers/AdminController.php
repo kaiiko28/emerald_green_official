@@ -436,6 +436,8 @@ class AdminController extends Controller
 
         $id = $request->GU;
 
+        $joined_at = date('Y-m-d H:i:s',strtotime("+8 hours"));
+
         $connection_id = 'EG_GU-' . str_random(2) . '-'  . str_random(4);
         $table_id = 'Table-' . str_random(4);
         $table = 'Table 1';
@@ -445,7 +447,8 @@ class AdminController extends Controller
             "connection_id" => $connection_id,
             "current_table_id" => $table_id,
             "current_table" => $table,
-            "current_table_earning" => $earnings
+            "current_table_earning" => $earnings,
+            "joined_table_at" => $joined_at,
         ]);
 
 
