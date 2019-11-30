@@ -60,47 +60,68 @@
 
             </form>
 
-            {{-- <table id="invite_list" class="table datatable table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Code</th>
-                        <th>Current Role</th>
-                        <th>Modify Role</th>
-                    </tr>
-                </thead>
+            <div class="col-sm-12">
+                    <table id="table_list" class="table datatable table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Table</th>
+                                    <th>Table ID</th>
+                                    <th>User Count</th>
+                                    <th>Users Username</th>
+                                    <th>Connectio ID</th>
+                                </tr>
+                            </thead>
 
-                <tbody>
-                    @if(count($user) > 0)
-                        @foreach($user as $users)
-                            <tr>
-                                <td>
-                                    {{ $users->name }}
-                                </td>
-                                <td>
-                                    {{ $users->username }}
-                                </td>
-                                <td>
-                                    {{ $users->code }}
-                                </td>
-                                <td>
-                                    {{ $users->role }}
-                                </td>
-                                <td class="text-center">
-                                    <a href="{{ route('admin.role_user') . '?id=' . $users->id }}" class="btn btn-primary bg-primary form-control">User</a><br>
-                                    <a href="{{ route('admin.role_Code-seller') . '?id=' . $users->id }}" class="btn btn-success form-control">Code Seller</a><br>
-                                    <a href="{{ route('admin.role_officer') . '?id=' . $users->id }}" class="btn btn-warning bg-warning form-control">Payout Officer</a>
-                                </td>
+                            <tbody>
+                                @if(count($tables) > 0)
+                                    @foreach($tables as $tables)
+                                        <tr>
+                                            <td>
+                                                @php
+                                                $table_users = DB::table('tableofexit')->where('current_table_id', $tables->current_table_id)->first();
+                                                @endphp
+                                                {{-- {{ $tables->username }} --}}
 
-                            </tr>
-                        @endforeach
-                    @else
-                        <h3>No Users Yet</h3>
-                    @endif
+                                                {{-- @foreach ($table_users as $user) --}}
+                                                    {{$table_users->current_table}}
+                                                {{-- @endforeach --}}
+                                            </td>
+                                            <td>
+                                                {{ $tables->current_table_id }}
+                                            </td>
+                                            <td>
+                                                {{ $tables->table_count }}
+                                            </td>
+                                            <td>
+                                                @php
+                                                   $table_users = DB::table('tableofexit')->where('current_table_id', $tables->current_table_id)->get();
+                                                @endphp
+                                                {{-- {{ $tables->username }} --}}
 
-                </tbody>
-            </table> --}}
+                                                @foreach ($table_users as $user)
+                                                    {{$user->username}},
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @php
+                                                    $table_users = DB::table('tableofexit')->where('current_table_id', $tables->current_table_id)->first();
+                                                 @endphp
+                                                 {{-- {{ $tables->username }} --}}
+
+                                                 {{-- @foreach ($table_users as $user) --}}
+                                                     {{$user->connection_id}}
+                                                 {{-- @endforeach --}}
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <h3>No Users Yet</h3>
+                                @endif
+
+                            </tbody>
+                        </table>
+            </div>
 
 
 
@@ -111,7 +132,7 @@
 @section('scripts')
     <script>
         $(document).ready( function () {
-            $('#user_list').DataTable();
+            $('#table_list').DataTable();
         } );
     </script>
 @endsection

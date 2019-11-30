@@ -159,6 +159,7 @@ class RegisterController extends Controller
                     $table->connection_id = $upline_connection;
                     $table->current_table_id = $table_id;
                     $table->current_table = 'Table 1';
+                    $table->table_batch = 'batch b';
                     $table->current_table_earning = 0;
                     $table->joined_table_at = $joined_at;
                 $table->save();

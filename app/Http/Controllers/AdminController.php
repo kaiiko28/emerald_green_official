@@ -413,9 +413,17 @@ class AdminController extends Controller
 
     public function assign_table()
     {
+
+        $tables = TableOfExit::select(DB::raw('count(*) as table_count, current_table_id'))
+        ->where('current_table_id', '!=', null)
+        ->groupBy('current_table_id')
+        ->get();
+
+        $table_users = TableOfExit::where('current_table_id', $tables);
+
         $GU = TableOfExit::where('connection_id', null)->get();
 
-        return view('admin.assign_gu_table',compact('GU'));
+        return view('admin.assign_gu_table',compact('GU','tables','table_users'));
     }
 
 

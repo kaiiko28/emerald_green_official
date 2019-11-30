@@ -85,9 +85,9 @@
                                 <div class="col-md-12">
 
                                     <div class="invoice-address">
-                                        @if ($upline == NULL)
+                                        @if (! $upline)
                                             <div class="text-center">
-                                                <h3>Upline Not Found</h3>
+                                                <h3>Upline ID Not Found</h3>
                                                 <p>Contact Your upline</p>
                                             </div>
                                             @else

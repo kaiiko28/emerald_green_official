@@ -13,12 +13,12 @@ class TopAccountSeeder extends Seeder
     {
         $activation_code = 'EG-' . str_random(4) . '-' . date("G")  . str_random(2);
         DB::table('users')->insert([
-            'username' => 'Master_user',
+            'username' => 'master_user',
             'firstname' => 'ANNALIZA BADE',
             'lastname' => 'DELA CRUZ',
             'email' => 'emerald_master@gmail.com',
             'password' => Hash::make('masteradmin123123@'),
-            'referrer' => 'Master_Account',
+            'referrer' => 'master_account',
             'code' => $activation_code,
         ]);
 
@@ -26,14 +26,14 @@ class TopAccountSeeder extends Seeder
             'Solved' => 0,
             'Earnings' => 0,
             'user_id' => 1,
-            'username' => 'Master_user',
+            'username' => 'master_user',
             'user_email' => 'emerald_master@gmail.com',
             'captcha_count' => 10000,
         ]);
 
         DB::table('wallets')->insert([
 
-            'username' => 'Master_user',
+            'username' => 'master_user',
             'email' => 'emerald_master@gmail.com',
             'name' => 'ANNALIZA BADE DELA CRUZ',
             'user_id' => 1,
@@ -43,7 +43,7 @@ class TopAccountSeeder extends Seeder
 
         DB::table('tableofexit')->insert([
             'userid' => 1,
-            'username' => 'Master_user',
+            'username' => 'master_user',
             'email' => 'emerald_master@gmail.com',
             'user_code' => $activation_code,
             'current_table_earning' => 0,
@@ -51,7 +51,7 @@ class TopAccountSeeder extends Seeder
 
         DB::table('referals')->insert([
             'name' => 'ANNALIZA BADE DELA CRUZ',
-            'Referer_code' => 'Master_Account',
+            'Referer_code' => 'master_Account',
             'MyRef_code' => $activation_code,
             'reward' => 40,
             'indirect' => 10,

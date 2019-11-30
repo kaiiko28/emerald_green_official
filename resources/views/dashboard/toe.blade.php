@@ -18,7 +18,8 @@
 
 
         <div class="card-header" id="container" >
-            <h2 id="header">Table ID: {{$user->current_table_id}}<button class="pull-right btn btn-success" style="float:right;margin: 0;" id="reload">Refresh Table</button></h2>
+            <h2>
+                <span id="header">Table ID: {{$user->current_table_id}}<button class="pull-right btn btn-success" style="float:right;margin: 0;" id="reload">Refresh Table</button></span> </h2>
         </div>
         {{-- @php
             $exiter = DB::table('tableofexit')->where('current_table_id',$user->current_table_id)->first();
@@ -32,6 +33,21 @@
                 <h2 class="text-center">{{$user->current_table}}</h2>
                 {{-- {{$connection->username}} <br> --}}
                 {{-- {{$connection->connection_id}} --}}
+                {{-- @if (count($tables) > 0)
+                    @foreach ($tables as $item)
+                        @if ($item->table_count >= 15)
+                            @php
+                                $connection_id = DB::table('tableofexit')->where('current_table_id', $item->current_table_id)->first();
+                            @endphp
+                            <p>{{$item->current_table_id}} == {{$connection_id->connection_id}}</p>
+
+
+
+                        @endif
+                    @endforeach
+                @endif --}}
+
+                {{-- {{$tables}} --}}
                 <span id="users"></span>
                 @if (count($user_table) > 0)
 
@@ -114,7 +130,7 @@
 
                                     <div class="col-sm-{{$colspan}} bordered  @if($user->username == auth()->user()->username) bg-success @else bg-light  @endif" style="width:{{$width}}%;">{{ $user->username }} <br> {{ $user->connection_id }}</div>
                                     @else
-                                        <div class="bordered @if($user->username == auth()->user()->username) bg-success @else bg-light @endif" style="width:{{$width}}%;">{{ $user->username }}</div>
+                                        <div class="bordered @if($user->username == auth()->user()->username) bg-success @else bg-light @endif" style="width:{{$width}}%;">{{ $user->username }} <br> {{ $user->table_batch }}</div>
 
                                     @endif
                                     @php
@@ -178,46 +194,50 @@
             $("#header").load(location.href + " #header");
         });
 
+        setInterval(function(){
+
+        $("#content").load(location.href + " #toe");
+        }, 5000);
+
+        setInterval(function(){
+
+        $("#header").load(location.href + " #header");
+        }, 5000);
+
     </script>
 
 
 <script type="text/javascript">
     $(document).ready(function(){
         // $.get('getRequest', function(data){
-        //     console.log(data.user);
+        //     console.log(data);
         // });
 
-        // $.ajax({
-        //     type: "GET",
-        //     url: "getRequest",
-        //     success: function(data){
-        //         if ((data.errors)) {
-        //             console.log(data.errors);
-        //         }
-        //         else {
-        //             console.log(data);
-        //             // $('#users').html({
-        //             //     array.forEach(data => data {
-        //             //         '<div>' + data.userid + '</div>'
-        //             //     });
-        //             // });
+        $.ajax({
+            type: "GET",
+            url: "getRequest",
+            success: function(data){
+                if ((data.errors)) {
+                    console.log(data.errors);
+                }
+                else {
+                    console.log(data);
+                    // $('#users').html({
+                    //     array.forEach(data => data {
+                    //         '<div>' + data.userid + '</div>'
+                    //     });
+                    // });
 
-        //             console.log('asdfasg');
-        //         }
+                    console.log('asdfasg');
+                }
 
-        //     }
-        // })
+            }
+        })
 
-        setInterval(function(){
 
-            $("#content").load(location.href + " #toe");
-        }, 2000);
-
-        setInterval(function(){
-
-        $("#header").load(location.href + " #header");
-        }, 2000);
     });
+
+
 
 
 </script>
