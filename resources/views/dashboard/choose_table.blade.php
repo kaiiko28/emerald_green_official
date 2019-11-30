@@ -90,7 +90,12 @@
                                                 <h3>Upline ID Not Found</h3>
                                                 <p>Contact Your upline</p>
                                             </div>
-                                            @else
+                                        @elseif($user->current_table == 'Table 6')
+                                            <div class="text-center">
+                                                <h1>Congratulation!</h1>
+                                                <h3>You've finish the table of exits! Thank you for trusting Emerald Green.</h3>
+                                            </div>
+                                        @else
                                             <h3>Please ask {{$upline->firstname}} {{$upline->lastname}}</h3>
 
                                             <div class="row">

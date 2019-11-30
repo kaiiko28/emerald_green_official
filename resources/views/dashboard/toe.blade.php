@@ -34,12 +34,12 @@
                 {{-- {{$connection->username}} <br> --}}
                 {{-- {{$connection->connection_id}} --}}
                 {{-- @if (count($tables) > 0)
-                    @foreach ($tables as $item)
-                        @if ($item->table_count >= 15)
+                    @foreach ($tables as $jtem)
+                        @if ($jtem->table_count >= 15)
                             @php
-                                $connection_id = DB::table('tableofexit')->where('current_table_id', $item->current_table_id)->first();
+                                $connection_id = DB::table('tableofexit')->where('current_table_id', $jtem->current_table_id)->first();
                             @endphp
-                            <p>{{$item->current_table_id}} == {{$connection_id->connection_id}}</p>
+                            <p>{{$jtem->current_table_id}} == {{$connection_id->connection_id}}</p>
 
 
 
@@ -52,7 +52,7 @@
                 @if (count($user_table) > 0)
 
                     @php
-                        $i = 1;
+                        $j = 1;
 
                         $column = 0;
                     @endphp
@@ -62,7 +62,7 @@
                         @foreach($user_table as $user)
                                     @php
 
-                                        $column = $i;
+                                        $column = $j;
                                         $colspan = 12 / $column;
 
                                         if ($column == 1) {
@@ -128,13 +128,13 @@
                                     @endif
                                     @if ($colspan ==  12 || $colspan ==  6 || $colspan ==  3)
 
-                                    <div class="col-sm-{{$colspan}} bordered  @if($user->username == auth()->user()->username) bg-success @else bg-light  @endif" style="width:{{$width}}%;">{{ $user->username }} <br> {{ $user->connection_id }}</div>
+                                    <div class="col-sm-{{$colspan}} bordered  @if($user->username == auth()->user()->username) bg-success @else bg-light  @endif" style="width:{{$width}}%;">{{ $user->username }} <br>{{ $user->current_table_earning }}</div>
                                     @else
-                                        <div class="bordered @if($user->username == auth()->user()->username) bg-success @else bg-light @endif" style="width:{{$width}}%;">{{ $user->username }} <br> {{ $user->table_batch }}</div>
+                                        <div class="bordered @if($user->username == auth()->user()->username) bg-success @else bg-light @endif" style="width:{{$width}}%;">{{ $user->username }} <br> {{ $user->current_table_earning }}</div>
 
                                     @endif
                                     @php
-                                        $column = $i++;
+                                        $column = $j++;
                                     @endphp
 
 
@@ -143,7 +143,7 @@
                         @while($column < 15)
                             @php
 
-                                $column = $i;
+                                $column = $j;
                                 $colspan = 12 / $column;
 
                                 if ($column == 1) {
@@ -166,13 +166,13 @@
 
                             @if ($colspan ==  12 || $colspan ==  6 || $colspan ==  3)
 
-                                <div class="bordered col-xs-{{$colspan}} col-sm-{{$colspan}} bg-dark" style="width:{{$width}}%;">OPEN {{ $i }}</div>
+                                <div class="bordered col-xs-{{$colspan}} col-sm-{{$colspan}} bg-dark" style="width:{{$width}}%;">OPEN {{ $j }}</div>
                             @else
-                                <div class="bordered bg-dark" style="width:{{$colspan}}%;">OPEN {{ $i }}</div>
+                                <div class="bordered bg-dark" style="width:{{$colspan}}%;">OPEN {{ $j }}</div>
 
                             @endif
                             @php
-                                $column = $i++;
+                                $column = $j++;
                             @endphp
                         @endwhile
 
