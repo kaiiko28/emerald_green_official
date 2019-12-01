@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Leisure Shine Shop</title>
+    <title>EMERALD GREEN ONLINE SHOP</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
@@ -44,8 +44,8 @@
                 <div class="container" style="background: #00000047;">
                     <div class="header-left">
                         <a href="{{ route('shop') }}" class="logo text-center" style="color:#fff">
-                            <img src="{{ asset('logo.png') }}" alt="Leisure Shine" style="width: 15%;margin: 0 auto;">
-                            Leisure Shine Shop
+                            <img src="{{ asset('logo.png') }}" alt="EMERALD GREEN" style="width: 15%;margin: 0 auto;">
+                            EMERALD GREEN ONLINE SHOP
                         </a>
                     </div><!-- End .header-left -->
 
@@ -269,11 +269,11 @@
                                                                 <a href="product.html" class="product-image">
                                                                     @if ($item->productcode == null)
 
-                                                                        <img src="/storage/product_images/default.png" alt="Leisure Shine">
+                                                                        <img src="/storage/product_images/default.png" alt="EMERALD GREEN">
 
                                                                     @else
 
-                                                                        <img src="/storage/product_images/{{$product_image->cover_image}}" alt="Leisure Shine">
+                                                                        <img src="/storage/product_images/{{$product_image->cover_image}}" alt="EMERALD GREEN">
 
                                                                     @endif
 
@@ -309,7 +309,7 @@
                                                         <div class="product">
                                                             <figure class="product-image-container">
                                                                 <a href="#" class="product-image">
-                                                                    <img src="/storage/product_images/{{$product_image->cover_image}}" alt="Leisure Shine">
+                                                                    <img src="/storage/product_images/{{$product_image->cover_image}}" alt="EMERALD GREEN">
                                                                 </a>
                                                             </figure>
 

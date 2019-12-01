@@ -9,7 +9,7 @@
     <meta name="description" content="Beautygenic Online Marketing" />
     <meta name="author" content="kaiiko28" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>{{ config('app.name', 'Leisure Shine') }}</title>
+    <title>{{ config('app.name', 'Emerald Green') }}</title>
 
 
        <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
@@ -68,7 +68,7 @@
 		<!-- Nav Bar -->
 		<nav class="navbar fixed-top navbar-expand-lg navbar-light" id="header-fix">
 			<div class="container">
-						<a class="navbar-brand" href="{{ url('/home') }}" style="color: #fff;"><img class="img-responsive" style="width:50px"  src="{{ asset('logo.png') }}" alt="leisureshine_logo"> {{ config('app.name', 'Leisure Shine') }}</a>
+						<a class="navbar-brand" href="{{ url('/home') }}" style="color: #fff;"><img class="img-responsive" style="width:50px"  src="{{ asset('logo.png') }}" alt="EMERALD GREEN"> {{ config('app.name', 'EMERALD GREEN') }}</a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 							<span class="navbar-toggler-icon"></span>
@@ -136,7 +136,7 @@
 			<div class="container">
 				<div class="row pt-5">
 					<div class="col-lg-8 col-md-12 mx-auto align-items-center pt2">
-						<h1 class="display-5 font-weight-bold  text-uppercase text-white pt-5">LeisureShine Online</h1>
+						<h1 class="display-5 font-weight-bold  text-uppercase text-white pt-5">EMERALD GREEN</h1>
 						<h4 class="text-white">The habit of saving is itself an education; it fosters every virtue, teaches self-denial, cultivates the sense of order, trains to forethought, and so broadens the mind.</h4>
 						<p>Free time is a terrible thing to waste. <br> JOIN US NOW.</p>
 
@@ -210,7 +210,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-7 col-md-7 text-white  pt2">
-						<h1 class="display-5 text-uppercase font-weight-bold text-white mb-3 pt-5"> About Leisure Shine  </h1>
+						<h1 class="display-5 text-uppercase font-weight-bold text-white mb-3 pt-5"> About EMERALD GREEN  </h1>
 
                         <p>Beautygenic is an Affliate marketing and online store involves direct selling of products and works primarily on encoding captcha's.</p>
 
@@ -233,7 +233,7 @@
 				<div class="row">
 					<div class="col-lg-8 col-md-8 mx-auto text-center">
 						<h1 class="display-5 font-weight-bold text-uppercase mb-3">Learn to Earn!</h1>
-						<p>Here the steps and ways to earn here in Leisure Shine</p>
+						<p>Here the steps and ways to earn here in EMERALD GREEN</p>
 					</div>
 				</div>
 				<div class="row mt-4">
@@ -607,11 +607,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 col-md-12 mx-auto text-center">
-						<h6 class="text-white">2019 All Right Reserved By Leisure Shine Online</h6>
+						<h6 class="text-white">2019 All Right Reserved By EMERALD GREEN Online</h6>
 						<ul class="list-inline mt-3 mb-0">
-							<li class="list-inline-item">
+							{{-- <li class="list-inline-item">
 								<a href="https://www.facebook.com/LeisureShine-Support-Group-120547032673970/"><div class="icon-bg1"><i class="fa fa-facebook"></i></div></a>
-							</li>
+							</li> --}}
 							{{-- <li class="list-inline-item">
 								<a href="#"><div class="icon-bg1"><i class="fa fa-twitter"></i></div></a>
 							</li>

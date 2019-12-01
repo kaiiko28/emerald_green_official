@@ -452,13 +452,13 @@
                                         <div class="col-sm-12">
                                             <div class="checkbox-custom chekbox-info">
 
-                                                <h3 class="bg-success text-justify" style="padding:10px;">Note: LeisureShine Perfume Shop is not responsible for any mistake data that are stated above,
-                                                    We strongly advice to double check the details before confirming the button. If there's any mistake
-                                                     on your account, please contact your codeseller or contact us at
-                                                    <a href="https://web.facebook.com/LeisureShine-Support-Group-120547032673970/" style="color:#000;" target="_blank">Customer Support</a></h3> <br><br>
-                                                <input id="confirm" value="I had confirm that all details stated above is correct." type="checkbox" name="confirm" required="">
-                                                <label for="confirm"><h3>I Confirm that all the details stated is correct</h3></label> <br>
-                                                </div>
+                                                <h3 class="bg-danger text-justify" style="padding:10px;">Note: Please double check the details before confirming the button. Emerald Green is not responsible for any mistake data that are stated above,
+                                                    Thank you</h3> <br><br>
+                                                <input id="confirm1" value="I had confirm that all details stated above is correct." type="checkbox" name="confirm" required="">
+                                                <label for="confirm1"><h3>Yes I understand</h3></label> <br>
+                                                <input id="confirm2" value="I had confirm that all details stated above is correct." type="checkbox" name="confirm" required="">
+                                                <label for="confirm2"><h3>Yes I Already double Checked all the data</h3></label> <br>
+                                            </div>
                                         </div>
                                         <div class="col-sm-12 text-right">
                                             <button type="submit" class="btn btn-warning">{{ __('Submit') }}</button>

@@ -190,6 +190,7 @@
                                 <ul id="user" class="panel-collapse collapse panel-switch" role="menu">
                                     <li><a href="{{ route('admin.accounts') }}"><span class="fas fa-cogs"></span> <span class="xn-text">Accounts Modification</span></a></li>
                                     <li><a href="{{ route('admin.assign_table') }}"><span class="fas fa-cogs"></span> <span class="xn-text">Assign User Table</span></a></li>
+                                    <li><a href="{{ route('admin.accounts') }}"><span class="fas fa-cogs"></span> <span class="xn-text">Assign User Role</span></a></li>
                                     {{-- <li><a href="{{ route('admin.accepted') }}"><span class="fas fa-cogs"></span> <span class="xn-text">Accepted</span></a></li> --}}
                                 </ul>
                             </li>
