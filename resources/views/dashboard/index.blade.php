@@ -343,7 +343,7 @@
             // console.log(gross);
 
 
-            var gross = formatNumber({{$UserCaptcha->Earnings}} + {{$table->current_table_earning}} )  ;
+            var gross = formatNumber({{$UserCaptcha->Earnings}} + {{$table->current_table_earning}} + total)  ;
             // var all = sumVal;
 
             document.getElementById("total_gross").innerHTML = gross;
