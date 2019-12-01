@@ -170,7 +170,7 @@
                         </li>
                         <li class="bot-left">
                             <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-1">
-                                <span class="sidebar-icon"><i class="fa fa-users"></i></span>
+                                <span class="sidebar-icon"><i class="fa fa-key"></i></span>
                                 <span class="sidebar-title">Code Creation</span>
                                 <span class="fa fa-caret"></span>
                             </a>
@@ -198,7 +198,7 @@
 
                         <li class="bot-left">
                             <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
-                                <span class="sidebar-icon"><i class="fa fa-users"></i></span>
+                                <span class="sidebar-icon"><i class="fa fa-cash-register"></i></span>
                                 <span class="sidebar-title">Payout Requests</span>
                                 <span class="fa fa-caret"></span>
                             </a>
@@ -212,7 +212,7 @@
 
                         <li class="bot-left">
                             <a href="{{ route('shop.product_list') }}">
-                                <span class="sidebar-icon"><i class="fas fa-tachometer-alt"></i></span>
+                                <span class="sidebar-icon"><i class="fas fa-store"></i></span>
                                 <span class="sidebar-title">Product List</span>
                             </a>
                         </li>
