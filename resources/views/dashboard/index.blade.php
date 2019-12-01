@@ -158,8 +158,8 @@
                                     <td><strong class="amount"><span id="invite_earnings"></span></strong></td>
                                 </tr>
                                 <tr>
-                                    <th>Table:</td>
-                                    <td>{{$table->current_table}} - ({{$table->current_table_earning}})</td>
+                                    <th>Exit Earnings:</td>
+                                    <td>₱ {{$table->current_table_earning}}</td>
                                 </tr>
                                 <tr>
                                     <th>Total:</td>
