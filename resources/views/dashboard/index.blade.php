@@ -159,7 +159,7 @@
                                 </tr>
                                 <tr>
                                     <th>Table:</td>
-                                    <td>Table 1 - (1,000)</td>
+                                    <td>{{$table->current_table}} - ({{$table->current_table_earning}})</td>
                                 </tr>
                                 <tr>
                                     <th>Total:</td>
@@ -180,7 +180,7 @@
 {{-- <div class="row"> --}}
 
 
-    {{-- <div class="col-sm-9">
+    <div class="col-sm-9">
         <div class="panel panel-default">
             <div class="panel-title">
                 <div class="col-sm-8">
@@ -301,7 +301,7 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 @endsection
 
 
