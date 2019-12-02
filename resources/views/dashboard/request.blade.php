@@ -388,7 +388,7 @@
 
                                             </div>
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-6" style="display:none">
 
 
                                                 <div class="row">
@@ -414,7 +414,7 @@
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
                                                                 <label class="col-form-label" for="acc_status">Account Status</label>
-                                                                <input readonly  type="text" class="form-control" id="acc_status" name="acc_status" value="{{$acc_status}}" placeholder="" required>
+                                                                <input readonly  type="text" class="form-control" id="acc_status" name="acc_status" value="Paid" placeholder="" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-12">
@@ -507,17 +507,12 @@
             var encashment = $('#encashment').text();
             // var subtotal = encashment;
 
-            if ('{{$acc_status}}' == 'Paid'){
-                subtotal = encashment;
-                tax = subtotal * .10;
-                total = subtotal - tax;
-            }
 
-            else {
-                subtotal = encashment - 200;
-                tax = subtotal * .10;
-                total = subtotal - tax;
-            }
+
+            subtotal = encashment;
+            tax = subtotal * .10;
+            total = subtotal - tax;
+
 
             document.getElementById("total").innerHTML =  subtotal;
             document.getElementById("sub_total").innerHTML =  subtotal;
