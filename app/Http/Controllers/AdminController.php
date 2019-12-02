@@ -381,7 +381,7 @@ class AdminController extends Controller
         ]);
 
         // return view ('admin.user_password')->with('success', ' the password of is now updated');
-        return redirect()->route('admin.user_password')->with('success', ' the password of ' . $user->name . ' is now updated');
+        return redirect()->route('admin.user_password')->with('success', ' the password of ' . $user->firstname . ' ' . $user->lastname . ' is now updated');
     }
 
     public function force_reset() {
