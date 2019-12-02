@@ -5,7 +5,9 @@
 
 @endsection
 @section('content')
-
+<div class="card-header text-center">
+    <h2>User Change Password</h2>
+</div>
 <div class="registration-container" style="background:transparent;">
     <div class="registration-box animated fadeInDown" style="padding-top: 50px;">
 

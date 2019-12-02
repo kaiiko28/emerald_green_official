@@ -5,18 +5,16 @@
 
 @endsection
 @section('content')
-<div class="row">
-        @include('inc.messeges')
+<div class="card-header text-center">
+    <h2>User Change Password</h2>
+</div>
+<div class="card-body">
+        {{-- @include('inc.messeges') --}}
     <div class="col-sm-12">
         <div class="panel panel-default">
-            <div class="panel-title">
-                <div class="col-sm-8">
-                    USER CHANGE PASSWORD
-                </div>
-            </div>
             <div class="panel-body">
-                <div class="table-responsive">
-                    <table id="invite_list" class="table datatable table-bordered">
+                <div class="">
+                    <table id="user_list" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>USERNAME</th>
@@ -35,7 +33,7 @@
                                             {{ $user->username }}
                                         </td>
                                         <td>
-                                            {{ $user->name }}
+                                            {{ $user->firstname }} {{ $user->lastname }}
                                         </td>
                                         <td>
                                             {{ $user->code }}
@@ -64,8 +62,14 @@
 
 @endsection
 
+
+
 @section('scripts')
-<script type="text/javascript" src="{{asset('/dashboard')}}/js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#user_list').DataTable();
+        } );
+    </script>
 @endsection
 
 
