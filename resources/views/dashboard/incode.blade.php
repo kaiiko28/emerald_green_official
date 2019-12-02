@@ -87,11 +87,11 @@
 
 
                                 @else
-                                    <h1>YOU REACH 700 ENCODE</h1>
+                                    <h1>YOU REACH 500 INCODE</h1>
                                     @if($now != $last)
                                         <a class="btn btn-success" href="{{ route('user.reset_incode') . '?user_id=' . Auth::user()->id }}">RESET</a>
                                     @else
-                                        <p>WAIT TILL THE RESET BUTTON WILL APPEAR</p>
+                                        <p>WAIT TILL RESET</p>
                                     @endif
 
                                 @endif
@@ -112,7 +112,7 @@
                 <div class="col-md-12">
                     <div class="card text-center bg-success">
                         <div class="card-body">
-                            <h4>Solved: ₱ <span id="earning-points"></span></h4>
+                            <h4>Reward: ₱ <span id="earning-points"></span></h4>
 
                         </div>
                     </div>
