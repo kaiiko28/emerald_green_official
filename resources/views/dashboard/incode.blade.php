@@ -32,7 +32,7 @@
                             {{-- @if($last == $now) --}}
                                 @if($now != $updated)
                                     <div style="margin-top:20px;">
-                                            <a class="btn btn-success btn-lg" href="{{ route('user.reset_incode') . '?user_id=' . Auth::user()->id }}"><span class="fa fa-clock fa-4x"></span><br><br> UPDATE YOUR DASHBOARD</a>
+                                            <a class="btn btn-success btn-lg" href="{{ route('user.reset_incode') . '?user_id=' . Auth::user()->id }}"><span class="fa fa-clock fa-4x"></span><br><br>CLICK HERE TO UPDATE YOUR DASHBOARD</a>
                                     </div>
 
                                 @elseif($user_captchas->Solved < 500 && $now == $updated)
