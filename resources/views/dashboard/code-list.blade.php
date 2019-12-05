@@ -23,7 +23,11 @@
 
 @section('content')
 <!-- START WIDGETS -->
-<div class="row">
+
+<div class="card-header text-center">
+    <h2>MY PURCHASED ACTIVATION CODES</h2>
+</div>
+<div class="card-body">
 
     <div class="col-lg-12">
         @php
@@ -32,19 +36,26 @@
 
         @endphp
         <div class="panel panel-default ">
-            <div class="panel-heading text-center">
-                <h1>ACCOUNT ACTIVATION CODES</h1>
-            </div>
             <div class="tabs">
-                <ul class="nav nav-tabs nav-justified" style="margin:10px 0;">
+                {{-- <ul class="nav nav-tabs nav-justified" style="margin:10px 0;">
                     <li class="active"><a href="#tab8" data-toggle="tab" aria-expanded="false">AVAILABLE</a></li>
                     <li class=""><a href="#tab9" data-toggle="tab" aria-expanded="false">USED</a></li>
+                </ul> --}}
+                <ul class="nav nav-tabs  nav-justified" id="myTabMD" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab-md" data-toggle="tab" href="#tab8" role="tab" aria-controls="tab8"
+                        aria-selected="true">AVAILABLE CODES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab-md" data-toggle="tab" href="#tab9" role="tab" aria-controls="tab9"
+                        aria-selected="false">USED CODE</a>
+                    </li>
                 </ul>
             </div>
 
             <div class="panel-body tab-content">
                 <div class="tab-pane active" id="tab8" style="overflow: auto;">
-                    <table id="code_list" class="table table-bordered table-responsive">
+                    <table id="code_list" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Code</th>
@@ -52,7 +63,6 @@
                                 <th>Price</th>
                                 <th>Date and Time</th>
                                 <th>Status</th>
-                                <th>Note</th>
                             </tr>
                         </thead>
 
@@ -73,14 +83,12 @@
                                             {{$accode->prices}}
                                         </td>
                                         <td>
-                                            {{ date('F d, Y ---- h:ia',strtotime('+8 hour',strtotime($accode->created_at))) }}
+                                            {{ date('F d, Y',strtotime('+8 hour',strtotime($accode->created_at))) }} <br>
+                                            {{ date('h:ia',strtotime('+8 hour',strtotime($accode->created_at))) }}
 
                                         </td>
                                         <td>
                                             {{$accode->status}}
-                                        </td>
-                                        <td>
-                                            {{$accode->notice}}
                                         </td>
 
                                     </tr>
@@ -90,17 +98,14 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="tab-pane" id="tab9" style="overflow: auto;">
-                    <table id="invite_list" class="table datatable table-bordered table-responsive">
+                <div class="tab-pane" id="tab9">
+                    <table id="used_list" class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>FULL NAME</th>
+                                <th>USER FULL NAME</th>
                                 <th>USERNAME</th>
                                 <th>EMAIL</th>
                                 <th>CODE</th>
-                                @if($date > '2019-10-20')
-                                <th>Note</th>
-                                @endif
                             </tr>
                         </thead>
 
@@ -125,11 +130,6 @@
                                         <td>
                                             {{$user->code}}
                                         </td>
-                                        @if($date > '2019-10-20')
-                                        <td>
-                                            {{$used->notice}}
-                                        </td>
-                                        @endif
                                     </tr>
                                 @endforeach
                             @endif
@@ -149,29 +149,6 @@
 
 
 @section('scripts')
-<script>
-
-    var table = document.getElementById("invite_list"), sumVal = 0;
-
-            for(var i = 1; i < table.rows.length; i++)
-            {
-                sumVal = sumVal + parseInt(table.rows[i].cells[2].innerHTML);
-            }
-
-            document.getElementById("invite_earnings").innerHTML = "₱ " + sumVal;
-
-            console.log(sumVal);
-            console.log(gross);
-
-
-            var gross =  {{$UserCaptcha->Earnings}} ;
-            var all = sumVal + gross;
-
-            document.getElementById("total_gross").innerHTML = "₱ " + all;
-
-            document.getElementById('encashments').value = all;
-
-    </script>
     <script>
         $('#code_list').DataTable( {
             "paging":   false,
@@ -179,14 +156,7 @@
             "info":     false
         } );
     </script>
-
-        <script type="text/javascript" src="{{asset('/dashboard')}}/js/plugins/datatables/jquery.dataTables.min.js"></script>
-
-        <script type='text/javascript' src='{{asset('/dashboard')}}/js/plugins/noty/jquery.noty.js'></script>
-        <script type='text/javascript' src='{{asset('/dashboard')}}/js/plugins/noty/layouts/topCenter.js'></script>
-        <script type='text/javascript' src='{{asset('/dashboard')}}/js/plugins/noty/layouts/topLeft.js'></script>
-        <script type='text/javascript' src='{{asset('/dashboard')}}/js/plugins/noty/layouts/topRight.js'></script>
-
-        <script type='text/javascript' src='{{asset('/dashboard')}}/js/plugins/noty/themes/default.js'></script>
-
+    <script>
+        $('#used_list').DataTable();
+    </script>
 @endsection
