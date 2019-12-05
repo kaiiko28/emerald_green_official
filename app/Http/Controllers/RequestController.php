@@ -9,6 +9,7 @@ use App\UserCaptcha;
 use App\User;
 use DB;
 use App\Accode;
+use App\TableOfExit;
 
 class RequestController extends Controller
 {
@@ -60,6 +61,9 @@ class RequestController extends Controller
         $limit = $request->input('encashments');
         $request = DB::table('requestpayouts')->where('user_id', Auth()->user()->id)->where('status', 'Pending')->get();
 
+        $table = TableOfExit::where('userid', auth()->user()->id)->first();
+        $UserCaptcha = UserCaptcha::where('user_id', auth()->user()->id)->first();
+        // $source = $request->input('source');
         // if ($limit < 200)
         // {
         //     return back()->with('error', 'Insuficient balance');
@@ -71,7 +75,7 @@ class RequestController extends Controller
         // }
 
 
-        return view ('dashboard.request',compact('acc_status','wallet'));
+        return view ('dashboard.request',compact('acc_status','wallet','table','UserCaptcha'));
 
         // return view ('dashboard.request');
     }
@@ -92,13 +96,16 @@ class RequestController extends Controller
         $username = $request->input('username');
         $email = $request->input('email');
         $deposit_amount = $request->input('deposit_amount');
+        $source = $request->input('source');
+
+
 
         $wallet = wallet::where('user_id',  $user_id)->first();
         if($deposit_amount >= 500) {
 
 
             if($deposit_amount == $wallet->deposit) {
-                return redirect()->route('request')->with('success', 'Please Fill up the form');
+                return redirect()->route('request',compact('source'))->with('success', 'Please Fill up the form');
             }
             else {
                 wallet::where('user_id',  $user_id)->increment('deposit',$deposit_amount);
@@ -162,20 +169,24 @@ class RequestController extends Controller
             'number' => 'required',
             'mode' => 'required',
             'source' => 'required',
+            'reward_limit' => 'required',
         ]);
         $source = $request->input('source');
         $encashment = $request->input('encashment_value');
         $sub_total = $request->input('sub_value');
         $code = $request->input('user_code');
-        $user_id = $request->input('user_id');
+        $user_id = auth()->user()->id;
         $wallet = wallet::where('user_id', $user_id)->value('deposit');
         $account_status = $request->input('acc_status');
+        $limit = $request->input('reward_limit');
 
-        if($source == "Invite Earnings") {
-            if($encashment > $wallet){
-                return back()->with('error', 'Invalid Incashment. Amount to be cashout must be equals or less than' . $wallet);
-            }
+        if($encashment > $limit){
+            return back()->with('error', 'Invalid Incashment. Amount to be cashout must be equals or less than' . $limit);
         }
+
+
+
+
 
         $Requestpayout = new Requestpayout;
         $Requestpayout->name = $request->input('fullName');
@@ -193,13 +204,27 @@ class RequestController extends Controller
 
         $Requestpayout->save();
 
-        if($source == "Invite Reward") {
-            wallet::where('user_id',  $user_id)->decrement('deposit',$sub_total);
+
+
+        if($source == "Invite") {
+            // wallet::where('user_id',  $user_id)->decrement('deposit',$sub_total);
             wallet::where('user_id',  $user_id)->increment('withdrawal',$sub_total);
         }
-        else {
+        if ($source == "Captcha and Table of Exit Earnings") {
+            $tablereward = $request->input('table');
+            $captchareward = $request->input('captcha');
+            UserCaptcha::where('user_id',  $user_id)->decrement('Earnings',$captchareward);
+            UserCaptcha::where('user_id',  $user_id)->increment('encashments',$captchareward);
+            TableOfExit::where('userid',  $user_id)->decrement('current_table_earning',$tablereward);
+            TableOfExit::where('userid',  $user_id)->increment('claimed_earnings',$tablereward);
+        }
+        if ($source == "Captcha Earnings") {
             UserCaptcha::where('user_id',  $user_id)->decrement('Earnings',$sub_total);
             UserCaptcha::where('user_id',  $user_id)->increment('encashments',$sub_total);
+        }
+        if ($source == "Table of Exit Earnings") {
+            TableOfExit::where('userid',  $user_id)->decrement('current_table_earning',$sub_total);
+            TableOfExit::where('userid',  $user_id)->increment('claimed_earnings',$sub_total);
         }
 
 

@@ -22,15 +22,20 @@
                                 $lastincode = $user_captchas->last_incode;
                                 $last = date_format(new DateTime($lastincode),"Y-m-d");
                                 $lasttype = date_format(new DateTime($lastincode),"Y-m-d -- h:i:sa");
-                                $now = date('Y-m-d H:i:s',strtotime("+8 hours"));
+                                $now = date('F d, Y',strtotime("+8 hours"));
+                                $updated = date("F d, Y", strtotime($user_captchas->last_incode));
 
-
-                                // echo $t;
-                                // echo '<br>';
-                                // echo $now;
+                                //echo $updated;
+                                //echo '<br>';
+                                //echo $now;
                             @endphp
                             {{-- @if($last == $now) --}}
-                                @if($user_captchas->Solved < 500)
+                                @if($now != $updated)
+                                    <div style="margin-top:20px;">
+                                            <a class="btn btn-success btn-lg" href="{{ route('user.reset_incode') . '?user_id=' . Auth::user()->id }}"><span class="fa fa-clock fa-4x"></span><br><br> UPDATE YOUR DASHBOARD</a>
+                                    </div>
+
+                                @elseif($user_captchas->Solved < 500 && $now == $updated)
                                     <form id="reload" style=" background:#fff;">
                                         {{csrf_field()}}
 
@@ -85,13 +90,13 @@
                                             </div>
                                     </form>
 
-
                                 @else
-                                    <h1>YOU REACH 500 INCODE</h1>
-                                    @if($now != $last)
+                                    <h1>YOU REACH YOUR LIMIT</h1>
+                                    <h3>500 CAPTCHA A DAY ONLY</h3>
+                                    @if($now != $updated)
                                         <a class="btn btn-success" href="{{ route('user.reset_incode') . '?user_id=' . Auth::user()->id }}">RESET</a>
                                     @else
-                                        <p>WAIT TILL RESET</p>
+                                        <p>COME BACK AGAIN TOMORROW</p>
                                     @endif
 
                                 @endif

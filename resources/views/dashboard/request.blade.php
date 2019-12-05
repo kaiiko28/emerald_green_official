@@ -61,7 +61,7 @@
 <!-- START WIDGETS -->
 
 <div class="card-header text-center">
-    <h2>REQUEST <strong>INVITE ENCASHMENT</strong>
+    <h2>REQUEST <strong>ENCASHMENT</strong>
 
     </h2>
 </div>
@@ -126,24 +126,54 @@
                                                     <tr class="bg-primary">
                                                         <td colspan="2" class="text-center">
                                                             <strong>Navigate the Number to view the calculation</strong>
-                                                            @if ($acc_status == 'credit')
-                                                                Your account will be deducted 200. View calculation for your own risk.
-                                                            @endif
 
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="vertical-align: middle;">
-                                                            <strong>Request Amount:</strong>
-                                                        </td>
-                                                        <td class="text-right">
-                                                                {{-- <strong>₱ {{ request()->get('encashments') }}</strong> --}}
-
-                                                            <input type="number" class="form-control" id="request" min="500" max="{{$wallet->deposit}}" value="0" required>
 
 
+                                                            @php
+                                                                $source = "";
 
-                                                        </td>
+                                                            @endphp
+                                                            @if(request()->get('source') == "Captcha Earnings" || request()->get('source') == "Table of Exit Earnings")
+                                                                <td style="vertical-align: middle;">
+                                                                    <strong>Request Amount:</strong>
+                                                                </td>
+                                                                <td style="vertical-align: middle;">
+                                                                        <input type='number' class='form-control' id='request' min='500' max='{{ request()->get('encashments') }}' value='0' required> of {{request()->get('encashments')}}
+                                                                </td>
+
+
+                                                            @elseif (request()->get('source') == "Captcha and Table of Exit Earnings")
+                                                                <td  colspan="2" style="vertical-align: middle;">
+                                                                    <table style="border: none;">
+                                                                        <tr>
+                                                                            <td style="border: none;background:none">
+                                                                                <strong>Captcha Eanings:</strong>
+                                                                            </td>
+                                                                            <td style='border: none;background:none'>
+                                                                                <input type='number' class='form-control' id='captcha' name="captcha" min='500' max='{{$UserCaptcha->Earnings }}' value='0' required> of {{$UserCaptcha->Earnings}}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <strong>Table of Exit Eanings:</strong>
+                                                                            </td>
+                                                                            <td>
+                                                                                <input type='number' class='form-control' id='table' name="table" min='500' max='{{$table->current_table_earning}}' value='0' required> of {{$table->current_table_earning}}
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td  colspan="2" style="vertical-align: middle;"><input id="confirm" type="button" class="btn btn-success" value="Confirm Value"></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+
+
+                                                            @endif
+
                                                     </tr>
                                                 </table>
 
@@ -420,7 +450,7 @@
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
                                                                 <label class="col-form-label" for="source">Payout Source</label>
-                                                                <input readonly  type="text" class="form-control" id="source" name="source" value="Invite Reward" placeholder="" required>
+                                                                <input readonly  type="text" class="form-control" id="source" name="source" value="@if(request()->get('source') == null)Invite @else{{ request()->get('source') }} @endif" placeholder="" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-12">
@@ -433,6 +463,12 @@
                                                             <div class="form-group">
                                                                 <label class="col-form-label" for="encashment_value">Encashment value</label>
                                                                 <input readonly  type="number" class="form-control" id="encashment_value" name="encashment_value"  placeholder="" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group">
+                                                                <label class="col-form-label" for="reward_limit">Reward Limit</label>
+                                                                <input readonly  type="number" class="form-control" id="reward_limit" name="reward_limit"  value="{{ request()->get('encashments') }}" placeholder="" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -488,31 +524,50 @@
         }
     });
 </script>
-<script>
-// function myFunction() {
-    // var x = document.getElementById("request").value;
-    //     document.getElementById("encashment").innerHTML = "You selected: " + x;
-    // }
 
-    jQuery(function($) {
-
-        $('#encashment').text($('#request').val());
-
-        $('#request').on('input', function() {
+@if (request()->get('source') == "Captcha Earnings" || request()->get('source') == "Table of Exit Earnings" || request()->get('source') == "Invite")
+    <script>
+        jQuery(function($) {
             $('#encashment').text($('#request').val());
 
-            var subtotal = 0;
+                $('#request').on('input', function() {
+                    $('#encashment').text($('#request').val());
+
+                    var subtotal = 0;
+                    var tax = 0;
+                    var total = 0
+                    var encashment = $('#encashment').text();
+
+
+                    subtotal = encashment;
+                    tax = subtotal * .10;
+                    total = subtotal - tax;
+
+
+                    document.getElementById("total").innerHTML =  subtotal;
+                    document.getElementById("sub_total").innerHTML =  subtotal;
+                    document.getElementById("sub_tax").innerHTML =  tax;
+                    document.getElementById("net_total").innerHTML =  total;
+                    document.getElementById('sub_value').value = subtotal;
+                    document.getElementById('encashment_value').value = total;
+
+                });
+        });
+    </script>
+@else
+    <script>
+        $( "#confirm" ).on( "click", function() {
+            var y = $('#table').val();
+            var z = $('#captcha').val();
+            var subtotal = +y + +z;
+
             var tax = 0;
             var total = 0
-            var encashment = $('#encashment').text();
-            // var subtotal = encashment;
 
-
-
-            subtotal = encashment;
             tax = subtotal * .10;
             total = subtotal - tax;
 
+            console.log( total );
 
             document.getElementById("total").innerHTML =  subtotal;
             document.getElementById("sub_total").innerHTML =  subtotal;
@@ -520,11 +575,40 @@
             document.getElementById("net_total").innerHTML =  total;
             document.getElementById('sub_value').value = subtotal;
             document.getElementById('encashment_value').value = total;
-
         });
+    </script>
+@endif
+<script>
+// function myFunction() {
+    // var x = document.getElementById("request").value;
+    //     document.getElementById("encashment").innerHTML = "You selected: " + x;
+    // }
 
 
-    });
+
+
+    //function confirm() {
+        //var subtotal = 0;
+        //var tax = 0;
+        //var total = 0
+        // var subtotal = encashment;
+
+
+
+        //subtotal = total;
+        //tax = subtotal * .10;
+        //total = subtotal - tax;
+
+
+        //document.getElementById("total").innerHTML =  subtotal;
+        //document.getElementById("sub_total").innerHTML =  subtotal;
+        //document.getElementById("sub_tax").innerHTML =  tax;
+        //document.getElementById("net_total").innerHTML =  total;
+        //document.getElementById('sub_value').value = subtotal;
+        //document.getElementById('encashment_value').value = total;
+
+    //}
+
 </script>
 
 

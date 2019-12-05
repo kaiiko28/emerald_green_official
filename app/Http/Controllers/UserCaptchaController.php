@@ -27,8 +27,14 @@ class UserCaptchaController extends Controller
     public function index()
     {
 
+        $t = date("h")+8;
+        $now = date('Y-m-d',strtotime("+8 hours"));
+        $new = date("F d, Y", strtotime($now));
+
 
         $user_captchas = UserCaptcha::where('user_id', auth()->user()->id)->first();
+
+        $updated = date("F d, Y", strtotime($user_captchas->last_incode));
         //$posts = Post::where('title','Post Two')->get();
 
         // $posts = Post::all();
@@ -38,6 +44,7 @@ class UserCaptchaController extends Controller
         else {
 
             return view('dashboard.incode',compact('user_captchas'));
+
         }
 
 

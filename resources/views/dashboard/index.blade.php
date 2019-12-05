@@ -145,7 +145,40 @@
                 <div class="col-sm-6">
                     <div class="card text-center bg-info">
                         <div class="card-header text-center">
-                            <h2>Earnings</h2>
+                            <h2>Earnings </h2>
+
+                            <form method="POST" action="{{ route('request1') }}">
+                                    {{ csrf_field() }}
+
+                                    <input class="hidden" style="display:none;" id="user_id" name="user_id" value="{{ Auth::user()->id }}" />
+                                    <input class="hidden" style="display:none;" id="user_code" name="user_code" value="{{ Auth::user()->code }}" />
+                                    <input class="hidden" style="display:none;" id="username" name="username" value="{{ Auth::user()->username }}" />
+                                    @php
+                                        $source ="";
+                                        if ($UserCaptcha->Earnings >= 500 && $table->current_table_earning >= 1000) {
+                                            $source = 'Captcha and Table of Exit Earnings';
+                                        }
+                                        elseif($table->current_table_earning >= 1000){
+                                            $source = "Table of Exit Earnings";
+                                        }
+                                        elseif ($UserCaptcha->Earnings > 500) {
+                                            $source = 'Captcha Earnings';
+                                        }
+                                    @endphp
+                                    <input class="hidden" id="encashments" style="display:none;" name="encashments" value="@if ($source == "Captcha and Table of Exit Earnings"){{ ($UserCaptcha->Earnings + $table->current_table_earning) }} @elseif($source == "Table of Exit Earnings"){{$table->current_table_earning}} @else {{$UserCaptcha->Earnings}} @endif" />
+                                    <input class="hidden" id="source" style="display:none;" name="source" value="{{$source}}" />
+
+                                    <div class="tile tile-primary tile-valign">
+                                        @if ($UserCaptcha->Earnings >= 500 || $table->current_table_earning >= 1000 )
+                                        <button id="redeem_reward" type="submit" class="btn btn-success redeem_reward disable-btn">CLAIM {{$source}}</button>
+                                        @endif
+
+
+
+                                    </div>
+                                </form>
+
+
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -177,7 +210,7 @@
 
 <div class="row" style="display:none!important;">
 
-{{-- <div class="row"> --}}
+    {{-- <div class="row"> --}}
 
 
     <div class="col-sm-9">
@@ -309,6 +342,15 @@
 @section('scripts')
 
     <script>
+        if( '{{$table->current_table}}' == 'Table 1') {
+
+            console.log('table is {{$table->current_table}}');
+            // $('#redeem_reward').prop('disabled',true);
+            document.getElementById("redeem_reward").style.display = "none";
+
+        }
+    </script>
+    <script>
         function formatNumber(num) {
             return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         }
@@ -390,7 +432,6 @@
             });
         });
     </script>
-    <script type="text/javascript" src="{{asset('/dashboard')}}/js/plugins/datatables/jquery.dataTables.min.js"></script>
 
 
 @endsection

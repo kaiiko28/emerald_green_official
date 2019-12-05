@@ -40,12 +40,13 @@
                         <strong class="amount"><span id="invite_earnings"></span></strong>
                     </div>
                     <div class="col-sm-4">
-                        <form method="POST" action="{{ route('wallet') }}">
+                        <form method="POST" action="{{ route('request1') }}">
                                 {{ csrf_field() }}
-                                <input class="hidden" style="display:none;" id="deposit_amount" name="deposit_amount" value="" />
+                                <input class="hidden" style="display:none;" id="deposit_amount" name="encashments" value="" />
                                 <input class="hidden" style="display:none;" id="user_id" name="user_id" value="{{ Auth::user()->id }}" />
-                                <input class="hidden" style="display:none;" id="email" name="email" value="{{ Auth::user()->email }}" />
+                                <input class="hidden" style="display:none;" id="user_code" name="user_code" value="{{ Auth::user()->code }}" />
                                 <input class="hidden" style="display:none;" id="user" name="user" value="{{ Auth::user()->username }}" />
+                                <input class="hidden" style="display:none;" id="source" name="source" value="Invite" />
 
 
                                 <button type="submit" id="invite_button" class="form-control disable-btn invite_cost mb-1 mt-1 mr-1 btn btn-success btn-md incashment_wallet">
@@ -53,6 +54,7 @@
                                     CLAIM<strong class="hidden" style="display:none;"><span id="invite_earnings1"></span></strong>
                                 </button>
                             </form>
+
                     </div>
                 </div>
             </div>
@@ -229,7 +231,7 @@
             // console.log(gross);
 
 
-            var gross = formatNumber({{$UserCaptcha->Earnings}} + 1000)  ;
+            var gross = formatNumber({{$UserCaptcha->Earnings}})  ;
             // var all = sumVal;
 
             document.getElementById("total_gross").innerHTML = gross;

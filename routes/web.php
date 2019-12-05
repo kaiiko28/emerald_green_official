@@ -56,6 +56,7 @@ Route::prefix('/user')->group(function() {
 
     // Route::get('/start', 'UserCaptchaController@store');
     Route::get('/request', 'RequestController@create')->name('request');
+    Route::post('/request', 'RequestController@create')->name('request1');
     Route::post('/wallet_request', 'RequestController@wallet_request')->name('wallet_request');
     Route::post('request/submit', 'RequestController@store')->name('submit');
     Route::post('/wallet', 'RequestController@wallet')->name('wallet');
