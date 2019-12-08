@@ -225,10 +225,12 @@ $new = date("F d, Y", strtotime($request_date));
                                                                         @if ($mypayouts->mop == 'GCASH')
                                                                             <img src="{{ asset('img/mop/gcash.png') }}" height="100px"/>
                                                                             <h3>GCASH</h3>
+                                                                            <h3 class="bg-primary" style="text-align:left; padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'COINS.PH')
                                                                             <img src="{{ asset('img/mop/coinph.png') }}" height="100px"/>
                                                                             <h3>COINS.PH</h3>
+                                                                            <h3 class="bg-primary" style="text-align:left; padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'PAYMAYA')
                                                                             <img src="{{ asset('img/mop/paymaya.png') }}" height="100px"/>

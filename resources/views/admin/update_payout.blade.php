@@ -198,6 +198,8 @@ $new = date("F d, Y", strtotime($request_date));
 
                                 </div>
 
+                                <h3>{{$mypayouts->sub_total}}</h3>
+
                             </div>
                             <div class="col-md-6">
                                 <h4>Amount Due</h4>
