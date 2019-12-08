@@ -225,32 +225,32 @@ $new = date("F d, Y", strtotime($request_date));
                                                                         @if ($mypayouts->mop == 'GCASH')
                                                                             <img src="{{ asset('img/mop/gcash.png') }}" height="100px"/>
                                                                             <h3>GCASH</h3>
-                                                                            <h3 class="bg-primary" style="text-align:left; padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
+                                                                            <h3 class="bg-primary" style="padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'COINS.PH')
                                                                             <img src="{{ asset('img/mop/coinph.png') }}" height="100px"/>
                                                                             <h3>COINS.PH</h3>
-                                                                            <h3 class="bg-primary" style="text-align:left; padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
+                                                                            <h3 class="bg-primary" style="padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'PAYMAYA')
                                                                             <img src="{{ asset('img/mop/paymaya.png') }}" height="100px"/>
-                                                                            <h3 class="bg-primary" style="text-align:left; padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
+                                                                            <h3 class="bg-primary" style="padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'BDO')
                                                                             <img src="{{ asset('img/mop/bdo.png') }}" height="100px"/>
-                                                                            <h3 class="bg-primary" style="text-align:left; padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
+                                                                            <h3 class="bg-primary" style="padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'BPI')
                                                                             <img src="{{ asset('img/mop/bpi.png') }}" height="100px"/>
-                                                                            <h3 class="bg-primary" style="text-align:left; padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
+                                                                            <h3 class="bg-primary" style="padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'METRO_BANK')
                                                                             <img src="{{ asset('img/mop/metrobank.png') }}" height="100px"/>
-                                                                            <h3 class="bg-primary" style="text-align:left; padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
+                                                                            <h3 class="bg-primary" style="padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'EAST WEST')
                                                                             <img src="{{ asset('img/mop/ew.png') }}" height="100px"/>
-                                                                            <h3 class="bg-primary" style="text-align:left; padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
+                                                                            <h3 class="bg-primary" style="padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'WESTERN_UNION')
                                                                             <img src="{{ asset('img/mop/western.png') }}" height="100px"/>
@@ -258,7 +258,7 @@ $new = date("F d, Y", strtotime($request_date));
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'PNB')
                                                                             <img src="{{ asset('img/mop/pnb.png') }}" height="100px"/>
-                                                                            <h3 class="bg-primary" style="text-align:left; padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
+                                                                            <h3 class="bg-primary" style="padding: 10px;">Account Number: <span class="pull-right">{{$mypayouts->acc_number}}</span></h3>
                                                                         @endif
                                                                         @if ($mypayouts->mop == 'CEBUANA')
                                                                             <img src="{{ asset('img/mop/cebuana.png') }}" height="100px"/>
