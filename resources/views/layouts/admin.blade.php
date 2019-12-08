@@ -20,7 +20,7 @@
     <link href="{{ asset('plugin/mdb/css/mdb.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('plugin/fontawsome/css/all.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugin/mdb/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugin/mdb/css/style.css?v=1.1') }}" rel="stylesheet">
 
 
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
