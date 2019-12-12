@@ -155,13 +155,13 @@
                                     <input class="hidden" style="display:none;" id="username" name="username" value="{{ Auth::user()->username }}" />
                                     @php
                                         $source ="";
-                                        if ($UserCaptcha->Earnings >= 500 && $table->current_table_earning >= 1000) {
+                                        if ($UserCaptcha->Earnings >= 1 && $table->current_table_earning >= 1000) {
                                             $source = 'Captcha and Table of Exit Earnings';
                                         }
                                         elseif($table->current_table_earning >= 1000){
                                             $source = "Table of Exit Earnings";
                                         }
-                                        elseif ($UserCaptcha->Earnings > 500) {
+                                        elseif ($UserCaptcha->Earnings > 0) {
                                             $source = 'Captcha Earnings';
                                         }
                                     @endphp
@@ -169,7 +169,7 @@
                                     <input class="hidden" id="source" style="display:none;" name="source" value="{{$source}}" />
 
                                     <div class="tile tile-primary tile-valign">
-                                        @if ($UserCaptcha->Earnings >= 500 || $table->current_table_earning >= 1000 )
+                                        @if ($UserCaptcha->Earnings >= 1 || $table->current_table_earning >= 1000 )
                                         <button id="redeem_reward" type="submit" class="btn btn-success redeem_reward disable-btn">CLAIM {{$source}}</button>
                                         @endif
 

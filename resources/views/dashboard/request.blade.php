@@ -141,7 +141,7 @@
                                                                     <strong>Request Amount:</strong>
                                                                 </td>
                                                                 <td style="vertical-align: middle;">
-                                                                        <input type='number' class='form-control' id='request' min='500' max='{{ request()->get('encashments') }}' value='0' required> of {{request()->get('encashments')}}
+                                                                        <input type='number' class='form-control' id='request' min='1' max='{{ request()->get('encashments') }}' value='0' required> of {{request()->get('encashments')}}
                                                                 </td>
 
 
@@ -153,7 +153,7 @@
                                                                                 <strong>Captcha Eanings:</strong>
                                                                             </td>
                                                                             <td style='border: none;background:none'>
-                                                                                <input type='number' class='form-control' id='captcha' name="captcha" min='500' max='{{$UserCaptcha->Earnings }}' value='0' required> of {{$UserCaptcha->Earnings}}
+                                                                                <input type='number' class='form-control' id='captcha' name="captcha" min='1' max='{{$UserCaptcha->Earnings }}' value='0' required> of {{$UserCaptcha->Earnings}}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -171,7 +171,13 @@
                                                                     </table>
                                                                 </td>
 
-
+                                                            @else
+                                                                <td style="vertical-align: middle;">
+                                                                    <strong>Request Amount:</strong>
+                                                                </td>
+                                                                <td style="vertical-align: middle;">
+                                                                        <input type='number' class='form-control' id='request' min='1' max='{{ request()->get('encashments') }}' value='0' required> of {{request()->get('encashments')}}
+                                                                </td>
                                                             @endif
 
                                                     </tr>
