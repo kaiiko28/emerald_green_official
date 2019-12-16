@@ -101,7 +101,7 @@ class RequestController extends Controller
 
 
         $wallet = wallet::where('user_id',  $user_id)->first();
-        if($deposit_amount >= 500) {
+        if($deposit_amount >= 300) {
 
 
             if($deposit_amount == $wallet->deposit) {
