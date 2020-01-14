@@ -77,22 +77,22 @@ class TableOfExitController extends Controller
                 $x = 2;
             }
             if($user->current_table == 'Table 2') {
-                $reward = 3000;
+                $reward = 2000;
                 $i = 2;
                 $x = 3;
             }
             if($user->current_table == 'Table 3') {
-                $reward = 10000;
+                $reward = 7000;
                 $i = 3;
                 $x = 4;
             }
             if($user->current_table == 'Table 4') {
-                $reward = 20000;
+                $reward = 10000;
                 $i = 4;
                 $x = 5;
             }
             if($user->current_table == 'Table 5') {
-                $reward = 30000;
+                $reward = 20000;
                 $i = 5;
                 $x = 6;
             }

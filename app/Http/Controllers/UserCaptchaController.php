@@ -306,7 +306,7 @@ class UserCaptchaController extends Controller
 
                 // $UserCaptcha->save();
                 $user->increment('Solved',1);
-                $user->increment('Earnings',0.10);
+                $user->increment('Earnings',0.025);
                 $user->decrement('captcha_count',1);
 
                 // return redirect()->back()->with('success', 'Correct!');
