@@ -147,7 +147,7 @@
                         <div class="card-header text-center">
                             <h2>Earnings </h2>
 
-                            <form method="POST" action="{{ route('request1') }}">
+                            {{-- <form method="POST" action="{{ route('request1') }}">
                                     {{ csrf_field() }}
 
                                     <input class="hidden" style="display:none;" id="user_id" name="user_id" value="{{ Auth::user()->id }}" />
@@ -176,7 +176,7 @@
 
 
                                     </div>
-                                </form>
+                            </form> --}}
 
 
                         </div>
