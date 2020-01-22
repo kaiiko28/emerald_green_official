@@ -155,27 +155,27 @@
                                     <input class="hidden" style="display:none;" id="username" name="username" value="{{ Auth::user()->username }}" />
                                     @php
                                         $source ="";
-                                        // if ($UserCaptcha->Earnings >= 1 && $table->current_table_earning >= 1000) {
-                                        //     $source = 'Captcha and Table of Exit Earnings';
-                                        // }
-                                        // elseif($table->current_table_earning >= 1000){
-                                        //     $source = "Table of Exit Earnings";
-                                        // }
-                                        // elseif ($UserCaptcha->Earnings > 0) {
-                                        //     $source = 'Captcha Earnings';
-                                        // }
-
-                                        if($table->current_table_earning >= 1000){
+                                        if ($UserCaptcha->Earnings >= 1 && $table->current_table_earning >= 1000) {
+                                            $source = 'Captcha and Table of Exit Earnings';
+                                        }
+                                        elseif($table->current_table_earning >= 1000){
                                             $source = "Table of Exit Earnings";
                                         }
+                                        elseif ($UserCaptcha->Earnings > 0 && $table->current_table != "Table 1") {
+                                            $source = 'Captcha Earnings';
+                                        }
+
+                                        // if($table->current_table_earning >= 1000){
+                                        //     $source = "Table of Exit Earnings";
+                                        // }
                                     @endphp
                                     <input class="hidden" id="encashments" style="display:none;" name="encashments" value="@if ($source == "Captcha and Table of Exit Earnings"){{ ($UserCaptcha->Earnings + $table->current_table_earning) }} @elseif($source == "Table of Exit Earnings"){{$table->current_table_earning}} @else {{$UserCaptcha->Earnings}} @endif" />
                                     <input class="hidden" id="source" style="display:none;" name="source" value="{{$source}}" />
 
                                     <div class="tile tile-primary tile-valign">
-                                        {{-- @if ($UserCaptcha->Earnings >= 1 || $table->current_table_earning >= 1000 ) --}}
+                                        @if ($UserCaptcha->Earnings >= 1 || $table->current_table != "Table 1" )
 
-                                        @if ($table->current_table_earning >= 1000 )
+                                        {{-- @if ($table->current_table_earning >= 1000 ) --}}
                                         <button id="redeem_reward" type="submit" class="btn btn-success redeem_reward disable-btn">CLAIM {{$source}}</button>
                                         @endif
 
