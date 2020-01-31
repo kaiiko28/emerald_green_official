@@ -289,6 +289,8 @@ class UserCaptchaController extends Controller
         $solve = $request->input('challenge');
         $answer = $request->input('solving');
 
+
+
         $user =  DB::table('user_captchas')->where('user_id', auth()->user()->id);
         $accept =  DB::table('user_captchas')->where('user_id', auth()->user()->id)->first();
 
@@ -305,8 +307,13 @@ class UserCaptchaController extends Controller
                 // $UserCaptcha->decrement('captcha_count',1);
 
                 // $UserCaptcha->save();
+
+
+
+
                 $user->increment('Solved',1);
                 $user->increment('Earnings',0.025);
+
                 $user->decrement('captcha_count',1);
 
                 // return redirect()->back()->with('success', 'Correct!');

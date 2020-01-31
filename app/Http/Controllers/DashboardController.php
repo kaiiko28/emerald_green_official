@@ -133,13 +133,21 @@ class DashboardController extends Controller
 
         $now = date('Y-m-d h:i:s',strtotime("+8 hours"));
 
+        $totalcaptcha = 60000;
+
 
         // echo $now;
         $id = $request->user_id;
+        $user = UserCaptcha::where('user_id',  $id)->first();
+        $captchasolve = $user->Earnings / 0.025;
+
+        $remainingcaptcha = $totalcaptcha - $captchasolve;
+
 
         UserCaptcha::where('user_id',  $id)->update([
             "Solved" => 0,
-            "last_incode" => $now
+            "last_incode" => $now,
+            'captcha_count' => $remainingcaptcha
         ]);
 
         return back()->with('Success', 'You can now continue your incoding');

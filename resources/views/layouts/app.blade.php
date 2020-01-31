@@ -69,7 +69,7 @@
     <header class="style1">
         <div id="site-header">
         <div class="container-fluid">
-             <a href="index.html" class="logo"><img src="{{ asset('HE_rectangle.png')}}" alt="image" width="129" height="37" data-retina="image/logo-2x.png" data-width="147" data-height="21"></a>
+             <a href="{{ url('/') }}" class="logo"><img src="{{ asset('HE_rectangle.png')}}" alt="image" width="129" height="37" data-retina="{{ asset('HE_rectangle.png')}}" data-width="147" data-height="21"></a>
              <div class="mobile-button">
                 <span></span>
              </div>
@@ -91,10 +91,10 @@
                         @else
                             <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/user/dashboard') }}">
-                                        <span class="sidebar-title">Dashboard</span>
+                                        <span class="sidebar-title" style="text-transform:uppercase">{{ Auth::user()->firstname }} Dashboard</span>
                                     </a>
                             </li>
-                            <li class="nav-item dropdown">
+                            {{-- <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->firstname }} <span class="caret"></span>
                                 </a>
@@ -111,7 +111,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </li> --}}
                         @endguest
                         {{-- <li class="active">
                              <a href="#" title="">Cathegory</a>
@@ -135,9 +135,9 @@
              </div><!-- /.nav-wrap -->
              <div class="search clearfix">
                  <ul>
-                     <li><input type="search" id="search" placeholder="Search..." ></li>
-                     <li><a href="#" class="header-search-icon"><i class="ti-search" aria-hidden="true"></i></a></li>
-                     <li><a href="#"> <i class="ti-align-justify" aria-hidden="true"></i> </a>
+                     {{-- <li><input type="search" id="search" placeholder="Search..." ></li> --}}
+                     {{-- <li><a href="#" class="header-search-icon"><i class="ti-search" aria-hidden="true"></i></a></li> --}}
+                     <li><a href="#" style="float:left"> <i class="ti-align-justify" style="float:left" aria-hidden="true"></i> </a>
                         <ul class="sub-menu">
                                 @guest
                                 <li class="nav-item">
@@ -151,11 +151,11 @@
                             @else
                                 <li class="nav-item">
                                         <a class="nav-link" href="{{ url('/user/dashboard') }}">
-                                            <span class="sidebar-icon"><i class="fas fa-tachometer-alt"></i></span>
-                                            <span class="sidebar-title">Dashboard</span>
+
+                                            <span class="sidebar-title">{{ Auth::user()->firstname }} Dashboard</span>
                                         </a>
                                 </li>
-                                <li class="nav-item dropdown">
+                                {{-- <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
@@ -172,7 +172,7 @@
                                             @csrf
                                         </form>
                                     </div>
-                                </li>
+                                </li> --}}
                             @endguest
                             {{-- <li><a href="projects1.html" title="">Login/ Register</a></li>
                             <li><a href="projects1.html" title="">My Account</a></li>
@@ -188,10 +188,10 @@
                         </ul><!-- /.sub-menu -->
                       </li>
                  </ul>
-                 <form class="header-search-form" role="search" method="get" action="#">
+                 {{-- <form class="header-search-form" role="search" method="get" action="#">
                     <input type="text" value="" name="#" class="header-search-field" placeholder="Search...">
                     <button type="submit" class="header-search-submit" title="Search"><i class="fa fa-search"></i></button>
-                 </form>
+                 </form> --}}
              </div>
         </div><!-- /container -->
         </div>
@@ -202,7 +202,7 @@
         <div class="container">
             <div class="footer-widgets">
                 <div class="widget widget-logo">
-                    <a href="index.html" class="logo"><img src="{{ asset('HE_rectangle.png')}}" alt="image" width="129" height="37" data-retina="image/logo-2x.png" data-width="147" data-height="21"></a>
+                    <a href="index.html" class="logo"><img src="{{ asset('HE_rectangle.png')}}" alt="image" width="129" height="37" data-retina="{{ asset('HE_rectangle.png')}}" data-width="147" data-height="21"></a>
                 </div> <!-- /widget-logo -->
                 <div class="widget widget-icon">
                     <ul>

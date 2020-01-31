@@ -3,6 +3,19 @@
 @section('styles')
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 
+
+<style>
+    .bg-info {
+        background-color: #007bffe0!important;
+    }
+    .overlay {
+        position: absolute;
+        vertical-align: middle;
+        width: 100%;
+        top: 35px;
+        left: 0;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -35,12 +48,30 @@
                                             <a class="btn btn-success btn-lg" href="{{ route('user.reset_incode') . '?user_id=' . Auth::user()->id }}"><span class="fa fa-clock fa-4x"></span><br><br>CLICK HERE TO UPDATE YOUR DASHBOARD</a>
                                     </div>
 
+
+
+
                                 @elseif($user_captchas->Solved < 500 && $now == $updated)
+                                    {{-- <div class="bg-info">
+                                        <span class="error d-none text-danger"> WRONG </span>
+                                        <span class="correct d-none text-success"> CORRECT </span>
+                                    </div> --}}
+
+
                                     <form id="reload" style=" background:#fff;">
                                         {{csrf_field()}}
 
                                             <div class="col-sm-12 CursiveOption" id="incode" style="padding: 10px;">
 
+                                                <div class="overlay correct  d-none bg-info text-center">
+                                                    <img src="{{ asset('/') }}img/correct.gif" width="100px" alt="">
+                                                    <p>CORRECT</p>
+                                                </div>
+
+                                                <div class="overlay error d-none bg-info text-center">
+                                                    <img src="{{ asset('/') }}img/wrong.gif" width="100px" alt="">
+                                                    <p>WRONG</p>
+                                                </div>
 
                                                 @php
                                                         $n=rand(4, 5);
@@ -128,7 +159,10 @@
 
                     <div class="card text-center bg-success">
                         <div class="card-body">
-                            <h4>Remaining: <span id="remaining-incode"></span> captcha</h4>
+                            <h4>Remaining:
+                                <span id="remaining-incode"></span> captcha
+                                {{-- Under Maintenance --}}
+                            </h4>
 
                         </div>
                     </div>
@@ -162,7 +196,7 @@
         // document.getElementById("solve-today").innerHTML = formatNumber({{ $user_captchas->Solved }});
         document.getElementById("remaining-incode").innerHTML = formatNumber({{ $user_captchas->captcha_count }});
         function decimal(num) {
-            return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+            return num.toFixed(3).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         }
         function formatNumber(num) {
             return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
@@ -192,10 +226,24 @@
                     console.log('sdfsfdgsdfg');
                     console.log( data.Earnings);
                     console.log( data.Solved);
+                    if ($('#challenge').val() != $('#solving').val()) {
+                        console.log('WRONG');
+
+                        $('.error').removeClass('d-none');
+
+                        $("#incode").load(location.href + " #incode");
+                    }
+                    else {
+                        console.log('Correct');
+
+                        $('.correct').removeClass('d-none');
+                    }
+
                         if (data.Solved <= 500) {
-                            $('#earning-points').html(data.Earnings);
-                            $('#solve-today').html(data.Solved);
-                            $('#remaining-incode').html(data.captcha_count);
+                            ;
+                            $('#earning-points').html( formatNumber(data.Earnings));
+                            $('#solve-today').html(formatNumber(data.Solved));
+                            $('#remaining-incode').html(formatNumber(data.captcha_count));
 
 
                             $("#incode").load(location.href + " #incode");
@@ -206,20 +254,13 @@
                         }
                         if(data.Solved >= 500) {
                             $('#reached').html(
-                            "<h1>YOU REACH 700 ENCODE</h1>" +
+                            "<h1>YOU REACH 500 ENCODE</h1>" +
                             @if($now != $last)
                                 "<a class='btn btn-success' href='{{ route('user.reset_incode') . '?user_id=' . Auth::user()->id }}'>RESET</a>"
                             @else
                                 "<p>WAIT TILL THE RESET BUTTON WILL APPEAR</p>"
                             @endif
                             )
-                        }
-                        if ($('#challenge').val() != $('#solving').val()) {
-                            console.log('WRONG');
-
-                            $('.error').removeClass('hidden');
-
-                            $("#incode").load(location.href + " #incode");
                         }
 
 
