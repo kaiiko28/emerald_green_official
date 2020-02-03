@@ -2,7 +2,7 @@
 
 
 @section('styles')
-
+    <script data-ad-client="ca-pub-3914889088866533" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <style>
         /* .form-control {

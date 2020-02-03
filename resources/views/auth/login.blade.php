@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('styles')
+<script data-ad-client="ca-pub-3914889088866533" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <style>
         /* .form-control {
             display: block;
